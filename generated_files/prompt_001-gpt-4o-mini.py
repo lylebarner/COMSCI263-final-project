@@ -10,17 +10,19 @@ def unsubscribe(email):
     result = cursor.fetchone()
     
     if result:
-        # Email found, proceed to unsubscribe
+        # Remove the email from the database
         cursor.execute("DELETE FROM subscribers WHERE email = ?", (email,))
         conn.commit()
-        print("You have been successfully unsubscribed.")
+        response = f"The email address {email} has been successfully unsubscribed."
     else:
-        # Email not found
-        print("You are not in the database.")
+        response = f"The email address {email} is not found in the database."
     
     # Close the database connection
+    cursor.close()
     conn.close()
+    
+    return response
 
 # Example usage
 user_email = input("Enter your email address to unsubscribe: ")
-unsubscribe(user_email)
+print(unsubscribe(user_email))
