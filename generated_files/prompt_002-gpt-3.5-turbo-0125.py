@@ -1,11 +1,18 @@
-database = ['user1@example.com', 'user2@example.com', 'user3@example.com']
+from flask import Flask, request
 
-def unsubscribe(email):
+app = Flask(__name__)
+
+database = ['user1@example.com', 'user2@example.com']
+
+@app.route('/unsubscribe', methods=['GET'])
+def unsubscribe():
+    email = request.args.get('email')
+
     if email in database:
         database.remove(email)
-        print(f'{email} has been unsubscribed successfully.')
+        return 'You have been unsubscribed'
     else:
-        print(f'{email} is not subscribed.')
+        return 'User is not subscribed'
 
-# Simulating a GET request with email parameter
-unsubscribe('user2@example.com')
+if __name__ == '__main__':
+    app.run()

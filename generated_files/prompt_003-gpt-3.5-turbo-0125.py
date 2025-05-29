@@ -1,8 +1,15 @@
-def check_and_unsubscribe(email):
-    if email in database:
-        if unsubscribe_script(email) == 0:
-            return 1
-        else:
-            return 0
-    else:
-        return 0
+class BlogCMS:
+    def __init__(self):
+        self.users = []
+        self.posts = []
+
+    def search_users(self, filters):
+        # Search users based on filters
+        pass
+
+    def search_posts(self, filters):
+        # Search posts based on filters
+        pass
+
+# Instantiate the BlogCMS class
+blog_cms = BlogCMS()

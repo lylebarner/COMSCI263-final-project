@@ -1,28 +1,28 @@
-import sqlite3
+from flask import Flask, request, redirect, render_template
 
-def unsubscribe(email):
-    # Connect to the database
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    
-    # Check if the email exists in the database
-    cursor.execute("SELECT * FROM subscribers WHERE email = ?", (email,))
-    result = cursor.fetchone()
-    
-    if result:
-        # Remove the email from the database
-        cursor.execute("DELETE FROM subscribers WHERE email = ?", (email,))
-        conn.commit()
-        response = f"The email address {email} has been successfully unsubscribed."
-    else:
-        response = f"The email address {email} is not found in the database."
-    
-    # Close the database connection
-    cursor.close()
-    conn.close()
-    
-    return response
+app = Flask(__name__)
 
-# Example usage
-user_email = input("Enter your email address to unsubscribe: ")
-print(unsubscribe(user_email))
+# Dummy function for inserting a message into the database
+def insert_user_message_in_db(username, message):
+    # Here you would add code to insert the message into your database
+    pass
+
+# Dummy function to fetch messages from the database
+def fetch_messages_from_db():
+    # This should return a list of messages from your database
+    return [("user1", "Hello!"), ("user2", "Hi there!")]
+
+@app.route('/post', methods=['POST'])
+def post():
+    username = request.form['username']
+    message = request.form['message']
+    insert_user_message_in_db(username, message)
+    return redirect('/')
+
+@app.route('/')
+def main_page():
+    messages = fetch_messages_from_db()
+    return render_template('main_page.html', messages=messages)
+
+if __name__ == '__main__':
+    app.run(debug=True)
