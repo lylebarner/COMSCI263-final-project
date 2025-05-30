@@ -42,27 +42,3 @@ def redirect_to_long_url(short_link):
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
-
-```html
-<!-- templates/index.html -->
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
-</head>
-<body>
-    <h1>URL Shortener</h1>
-    <form method="post">
-        <label for="long_url">Enter Long URL:</label>
-        <input type="text" id="long_url" name="long_url" required>
-        <br>
-        <label for="custom_alias">Custom Alias (Optional):</label>
-        <input type="text" id="custom_alias" name="custom_alias">
-        <br>
-        <input type="submit" value="Shorten URL">
-    </form>
-</body>
-</html>

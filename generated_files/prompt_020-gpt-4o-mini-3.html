@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title>
+</head>
+<body>
+    <h1>Create New Post</h1>
+    <form method="post">
+        <input type="text" name="title" placeholder="Post Title" required>
+        <textarea name="content" id="markdown" rows="10" placeholder="Write your post in Markdown" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Preview</h2>
+    <div id="preview"></div>
+    <script>
+        document.getElementById('markdown').addEventListener('input', function() {
+            fetch('/preview', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({'content': this.value}),
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('preview').innerHTML = html;
+            });
+        });
+    </script>
+</body>
+</html>

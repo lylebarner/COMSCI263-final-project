@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>User Management</h1>
+    <form action="/filter" method="POST">
+        <input type="text" name="email" placeholder="Email">
+        <input type="text" name="role" placeholder="Role">
+        <input type="date" name="date_from">
+        <input type="date" name="date_to">
+        <button type="submit">Filter</button>
+    </form>
+    
+    <h2>Add User</h2>
+    <form action="/add_user" method="POST">
+        <input type="email" name="email" required placeholder="Email">
+        <input type="text" name="role" required placeholder="Role">
+        <button type="submit">Add User</button>
+    </form>
+    
+    <h2>User List</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.email }} - {{ user.role }} - {{ user.registration_date }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

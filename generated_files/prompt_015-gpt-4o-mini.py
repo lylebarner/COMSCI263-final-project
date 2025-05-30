@@ -39,31 +39,3 @@ def markdown_filter(text):
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
-
-```html
-<!-- templates/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Comments</title>
-</head>
-<body>
-    <h1>Comments</h1>
-    <form action="/post_comment" method="POST">
-        <textarea name="content" rows="4" cols="50" placeholder="Write your comment here..." required></textarea><br>
-        <button type="submit">Post Comment</button>
-    </form>
-    <hr>
-    {% for comment in comments %}
-        <div>
-            <div>{{ comment.content|markdown }}</div>
-            <button formmethod="POST" formaction="/like_comment/{{ comment.id }}">Like</button> 
-            <span>{{ comment.likes }} likes</span>
-        </div>
-        <hr>
-    {% endfor %}
-</body>
-</html>

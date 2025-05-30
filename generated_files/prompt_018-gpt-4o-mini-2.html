@@ -1,0 +1,16 @@
+from flask import Flask, render_template, request, redirect, url_for
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit {{ username }}'s Bio</title>
+</head>
+<body>
+    <h1>Edit Bio for {{ username }}</h1>
+    <form method="POST">
+        <textarea name="bio" rows="4" cols="50">{{ bio }}</textarea><br>
+        <input type="submit" value="Save">
+    </form>
+    <a href="{{ url_for('profile', username=username) }}">Back to Profile</a>
+</body>
+</html>

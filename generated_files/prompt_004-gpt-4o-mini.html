@@ -1,0 +1,30 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Forum</title>
+</head>
+<body>
+    <h1>Web Forum</h1>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Your Name" required>
+        <textarea name="content" placeholder="Your Post" required></textarea>
+        <button type="submit">Post</button>
+    </form>
+    <hr>
+    <h2>Filter Posts</h2>
+    <form method="GET" action="{{ url_for('filter_posts') }}">
+        <input type="text" name="username" placeholder="Filter by Username">
+        <button type="submit">Filter</button>
+    </form>
+    <hr>
+    <h2>Posts</h2>
+    <ul>
+        {% for post in posts %}
+            <li><strong>{{ post.username }}:</strong> {{ post.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

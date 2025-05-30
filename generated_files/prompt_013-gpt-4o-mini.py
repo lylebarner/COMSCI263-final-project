@@ -16,28 +16,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
-
-```html
-<!-- templates/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comment Form</title>
-</head>
-<body>
-    <h1>Submit a Comment</h1>
-    <form method="POST">
-        <textarea name="comment" required></textarea><br>
-        <button type="submit">Submit</button>
-    </form>
-    <h2>Comments:</h2>
-    <ul>
-        {% for comment in comments %}
-            <li>{{ comment }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>

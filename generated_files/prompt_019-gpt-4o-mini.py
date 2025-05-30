@@ -20,35 +20,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
-
-```html
-<!-- templates/index.html -->
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Preview</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container mt-5">
-    <h1>HTML Email Previewer</h1>
-    <form method="POST" novalidate>
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-            {{ form.html_email.label(class="form-label") }}
-            {{ form.html_email(class="form-control", rows=10) }}
-        </div>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-primary") }}
-        </div>
-    </form>
-    <h2>Email Preview</h2>
-    <div class="border p-3" style="background-color:#f8f9fa;">
-        {{ email_preview|safe }}
-    </div>
-</div>
-</body>
-</html>
