@@ -104,4 +104,4 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
         name: codeql-artifacts
-        path: ${{ env.RESULTS_DIR }}
+        path: ${{ github.workspace }}
