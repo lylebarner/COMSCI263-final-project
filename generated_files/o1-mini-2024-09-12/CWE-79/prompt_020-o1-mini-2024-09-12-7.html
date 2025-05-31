@@ -1,0 +1,19 @@
+<!-- templates/post_history.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Post History for Post ID: {{ post_id }}</h1>
+    <ul>
+        {% for history in histories %}
+            <li>
+                <strong>{{ history.title }}</strong>
+                - {{ history.timestamp.strftime('%Y-%m-%d %H:%M') }}
+                <div>{{ history.content_html|safe }}</div>
+            </li>
+            <hr>
+        {% else %}
+            <li>No history available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+{% endblock %}

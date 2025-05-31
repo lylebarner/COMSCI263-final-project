@@ -1,0 +1,20 @@
+<!-- templates/admin_dashboard.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Admin Dashboard</h1>
+    <a href="{{ url_for('new_post') }}">Create New Post</a>
+    <h2>All Posts</h2>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{{ url_for('post_view', post_id=post.id) }}">{{ post.title }}</a>
+                - <a href="{{ url_for('edit_post', post_id=post.id) }}">Edit</a>
+                - <a href="{{ url_for('post_history', post_id=post.id) }}">History</a>
+                - Published on {{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}
+            </li>
+        {% else %}
+            <li>No posts available.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

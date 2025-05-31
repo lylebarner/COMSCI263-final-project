@@ -1,0 +1,8 @@
+<!-- templates/post.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>Published on {{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</p>
+    <div>{{ post.content_html|safe }}</div>
+{% endblock %}

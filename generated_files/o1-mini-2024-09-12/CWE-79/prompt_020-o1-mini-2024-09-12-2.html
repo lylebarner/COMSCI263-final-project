@@ -1,0 +1,17 @@
+<!-- templates/index.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Blog Posts</h1>
+    {% for post in posts %}
+        <div class="post">
+            <h2><a href="{{ url_for('post_view', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p>Published on {{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</p>
+            <div>{{ post.content_html|safe }}</div>
+        </div>
+        <hr>
+    {% else %}
+        <p>No posts available.</p>
+    {% endfor %}
+{% endblock %}
+

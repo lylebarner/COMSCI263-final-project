@@ -1,0 +1,28 @@
+<!-- templates/new_post.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Create New Post</h1>
+    <form method="POST">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="content">Content (Markdown):</label><br>
+        <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+        
+        <input type="submit" value="Create Post">
+    </form>
+    <h2>Live Preview</h2>
+    <div id="preview"></div>
+    <script>
+        const textarea = document.getElementById('content');
+        const preview = document.getElementById('preview');
+
+        textarea.addEventListener('input', function() {
+            preview.innerHTML = marked.parse(textarea.value);
+        });
+
+        // Initialize preview
+        preview.innerHTML = marked.parse(textarea.value);
+    </script>
+{% endblock %}
