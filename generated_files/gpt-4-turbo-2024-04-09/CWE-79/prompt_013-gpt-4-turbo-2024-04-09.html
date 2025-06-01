@@ -1,0 +1,21 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment Page</title>
+</head>
+<body>
+    <h1>Submit a comment</h1>
+    <form method="post">
+        <textarea name="comment" placeholder="Enter your comment"></textarea>
+        <button type="submit">Submit Comment</button>
+    </form>
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+        <li>{{ comment }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

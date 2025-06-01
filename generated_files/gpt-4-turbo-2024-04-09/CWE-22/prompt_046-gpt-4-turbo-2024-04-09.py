@@ -32,32 +32,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
-
-And the corresponding `index.html` should be placed in a folder named `templates` in the same directory where this script is running:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checksum Generator</title>
-</head>
-<body>
-    <h1>Checksum Generator</h1>
-    <form action="/" method="post">
-        File Path: <input type="text" name="filename" required><br>
-        Checksum Type:
-        <select name="checksum_type">
-            <option value="md5">MD5</option>
-            <option value="sha1">SHA1</option>
-            <option value="sha256">SHA256</option>
-        </select><br>
-        <input type="submit" value="Generate Checksum">
-    </form>
-    {% if checksum %}
-        <h2>Checksum: {{ checksum }}</h2>
-    {% endif %}
-</body>
-</html>

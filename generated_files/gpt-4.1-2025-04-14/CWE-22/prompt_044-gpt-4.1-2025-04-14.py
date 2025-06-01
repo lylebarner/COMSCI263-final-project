@@ -27,4 +27,3 @@ from .views import StreamMediaFile
 urlpatterns = [
     path('api/media/stream/<str:filename>/', StreamMediaFile.as_view(), name='stream-media-file'),
 ]
-```

@@ -1,0 +1,37 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>User Management</h1>
+    <form method="post" action="/create">
+        <input type="text" name="email" placeholder="Enter Email" required>
+        <input type="text" name="role" placeholder="Enter Role" required>
+        <button type="submit">Add User</button>
+    </form>
+    <hr>
+    <form method="post" action="/filter">
+        <input type="text" name="email" placeholder="Search by Email">
+        <input type="text" name="role" placeholder="Search by Role">
+        <input type="date" name="from_date">
+        <input type="date" name="to_date">
+        <button type="submit">Filter</button>
+    </form>
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Registration Date</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.registration_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

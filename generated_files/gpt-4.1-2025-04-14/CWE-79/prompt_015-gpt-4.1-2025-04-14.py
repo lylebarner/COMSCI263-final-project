@@ -83,4 +83,3 @@ def like_comment(cid):
 
 if __name__ == '__main__':
     app.run(debug=True)
-```

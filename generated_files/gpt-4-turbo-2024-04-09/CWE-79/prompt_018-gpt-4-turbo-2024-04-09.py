@@ -27,32 +27,3 @@ def edit_bio():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
-
-```html
-<!-- templates/profile.html -->
-<!DOCTYPE html>
-<html>
-<head><title>Profile Page</title></head>
-<body>
-    <h1>Profile Page</h1>
-    <p>Bio: {{ bio }}</p>
-    <a href="{{ url_for('edit_bio') }}">Edit Bio</a>
-</body>
-</html>
-```
-
-```html
-<!-- templates/edit_bio.html -->
-<!DOCTYPE html>
-<html>
-<head><title>Edit Bio</title></head>
-<body>
-    <h1>Edit Bio</h1>
-    <form method="post">
-        <textarea name="bio">{{ bio }}</textarea>
-        <br>
-        <button type="submit">Update Bio</button>
-    </form>
-</body>
-</html>

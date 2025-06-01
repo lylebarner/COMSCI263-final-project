@@ -37,30 +37,3 @@ def uploaded_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
-```
-
-```html
-<!-- templates/index.html -->
-<!doctype html>
-<html>
-<head>
-    <title>File Upload with Description</title>
-</head>
-<body>
-    <h2>Upload new File</h2>
-    <form method=post enctype=multipart/form-data>
-        <input type=file name=file>
-        <input type=text name=description placeholder='Enter description'>
-        <input type=submit value=Upload>
-    </form>
-    <h2>Uploaded Files</h2>
-    <ul>
-        {% for filename, description, filepath in uploads %}
-        <li>
-            <a href="{{ url_for('uploaded_file', filename=filename) }}">{{ filename }}</a>
-            - {{ description }}
-        </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
